@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HashTableProject
 {
@@ -8,7 +9,7 @@ namespace HashTableProject
         static void Main(string[] args)
         {
             MyMapNode<string, int> occurrences = new MyMapNode<string, int>(1);
-            string input = "to be or not to be";
+            string input = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
             string[] words = input.Split(null);
             foreach (String word in words)
             {
@@ -19,9 +20,17 @@ namespace HashTableProject
                 }
                 occurrences.Add(word, oldCount + 1);
             }
+            string[] repeat=new string[50];int index = -1;
             foreach (String word in words)
             {
-                Console.WriteLine(word + " : " + occurrences.Get(word));
+                if(!repeat.Contains(word))
+                {
+                    Console.WriteLine(word + " : " + occurrences.Get(word));
+                }
+                if (occurrences.Get(word)>1)
+                {
+                    repeat[++index] = word;
+                }
             }
         }
     }
