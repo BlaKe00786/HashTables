@@ -20,9 +20,11 @@ namespace HashTableProject
                 }
                 occurrences.Add(word, oldCount + 1);
             }
+            occurrences.Remove("avoidable");
             string[] repeat=new string[50];int index = -1;
             foreach (String word in words)
             {
+
                 if(!repeat.Contains(word))
                 {
                     Console.WriteLine(word + " : " + occurrences.Get(word));
